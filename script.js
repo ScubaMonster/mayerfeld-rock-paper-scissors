@@ -242,31 +242,30 @@ function getPlayerChoice() {
 // Do not update scores here.
 
 // The rules to check if the player beats the computer
-let rules = {
+const rules = {
     Rock : "Scissors",
     Scissors : "Paper",
     Paper : "Rock"
 }
 
-// Variables so they can store the Choices
-let computerChoice = getComputerPlay()
-let playerChoice = getPlayerChoice()
-
 // Funciton for the Computer play Generator
-function getComputerPlay(){
+function computerPlay(){
+
     let randomNum = Math.floor(Math.random() * 3);
-    let computerChoice= ["Rock", "Paper", "Scissors"];
-    return computerChoice[randomNum]
+    
+    let choices= ["Rock", "Paper", "Scissors"];
+    
+    return choices[randomNum]
 
 }
 
 //Function for Comperason between Player and Computer
-function playRound(){
+function playRound(playerSelection, computerSelection){
    
-    if(playerChoice === computerChoice){
+    if(playerSelection === computerSelection){
         return("Draw")
     }
-    else if(rules[playerChoice] === computerChoice){
+    else if(rules[playerSelection] === computerSelection){
         return("Player wins")
     }
     else {
@@ -274,10 +273,6 @@ function playRound(){
     }
 
 } 
-
-
-
-
 
 
 // ========================================
