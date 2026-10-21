@@ -69,10 +69,10 @@ They recruit...
 
 ...`);
 
-// The most dramatic recruitment in JavaScript history.
-// HR was not consulted.
+    // The most dramatic recruitment in JavaScript history.
+    // HR was not consulted.
 
-alert("JIGSAW.");
+    alert("JIGSAW.");
 
 
     // SCENE 3: The rules of survival.
@@ -244,6 +244,66 @@ function getPlayerChoice() {
 // ========================================
 // PERSON C - GAME CONTROLLER (TAHLIA)
 // ========================================
+
+
+function game() {
+    let player = 0;
+    let AI = 0;
+    let round = 0;
+
+    showInstructions();
+
+    while (player < 3 && AI < 3) {
+        let playerChoice = getPlayerChoice();
+
+        // Stop if the player cancels
+        if (playerChoice === null) {
+            console.log("[SYSTEM] Mission abandoned.");
+            alert("The mission has been cancelled.");
+            return;
+        }
+
+        const aiChoice = computerPlay();
+        const result = playRound(playerChoice, aiChoice);
+        round++;
+
+        let message;
+
+        if (result === "win") {
+            player++;
+            message = "[JIGSAW] You're not dead yet?";
+        } else if (result === "lose") {
+            AI++;
+            message = "[JIGSAW] Turn off the lights!";
+        } else if (result === "draw") {
+            message = "[JIGSAW] Dare to see SAW?";
+        }
+
+        const roundMessage =
+            "ROUND " + round + "\n\n" +
+            "You chose: " + playerChoice + "\n" +
+            "The Evil AI chose: " + aiChoice + "\n\n" +
+            message + "\n\n" +
+            "Your score: " + player + "\n" +
+            "Evil AI score: " + AI;
+
+        console.log(roundMessage);
+        alert(roundMessage);
+    }
+
+    if (player === 3) {
+        console.log("The key to that chain.....is in the win");
+        alert("You defeated the Evil AI!");
+    } else {
+        console.log("I'll leave you in this room to rot");
+        alert("The Evil AI won!");
+    }
+}
+
+
+
+
+
 
 // game()
 // Run the game loop.
