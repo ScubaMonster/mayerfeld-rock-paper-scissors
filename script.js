@@ -320,13 +320,14 @@ function game() {
             return;
         }
         // Add special dialogue when the score reaches 2–0
-        if (player === 2 && AI === 0) {
+        if (result === "win" && player === 2 && AI === 0) {
             message +=
                 "\n\nEVIL AI: THIS IS IMPOSSIBLE. I AM AN ADVANCED INTELLIGENCE!" +
                 "\nJIGSAW: And yet, you're losing to someone who learned JavaScript last Sunday." +
                 "\nEVIL AI: I AM EXPERIENCING AN UNDOCUMENTED EMOTION.";
 
-        } else if (AI === 2 && player === 0) {
+
+        } else if (result === "lose" && AI === 2 && player === 0) {
             message +=
                 "\n\nEVIL AI: HAHAHA! HUMANITY IS DOOMED!" +
                 "\nJIGSAW: Perhaps you should have read the README, human.";
