@@ -243,39 +243,39 @@ function getPlayerChoice() {
 
 // The rules to check if the player beats the computer
 const rules = {
-    Rock : "Scissors",
-    Scissors : "Paper",
-    Paper : "Rock"
+    Rock: "Scissors",
+    Scissors: "Paper",
+    Paper: "Rock"
 }
 
 // Funciton for the Computer play Generator
-function computerPlay(){
+function computerPlay() {
 
     let randomNum = Math.floor(Math.random() * 3);
-    
-    let choices= ["Rock", "Paper", "Scissors"];
-    
+
+    let choices = ["Rock", "Paper", "Scissors"];
+
     return choices[randomNum]
 
 }
 
 //Function for Comperason between Player and Computer
-function playRound(playerSelection, computerSelection){
-   
-    if(playerSelection === null){
+function playRound(playerSelection, computerSelection) {
+
+    if (playerSelection === null) {
         return null
     }
-    else if (playerSelection === computerSelection){
-        return("draw")
+    else if (playerSelection === computerSelection) {
+        return ("draw")
     }
-    else if(rules[playerSelection] === computerSelection){
-        return("win")
+    else if (rules[playerSelection] === computerSelection) {
+        return ("win")
     }
     else {
-        return("lose")
+        return ("lose")
     }
 
-} 
+}
 
 
 // ========================================
@@ -319,6 +319,18 @@ function game() {
             alert("SYSTEM ERROR! The round could not be completed.");
             return;
         }
+        // Add special dialogue when the score reaches 2–0
+        if (player === 2 && AI === 0) {
+            message +=
+                "\n\nEVIL AI: THIS IS IMPOSSIBLE. I AM AN ADVANCED INTELLIGENCE!" +
+                "\nJIGSAW: And yet, you're losing to someone who learned JavaScript last Sunday." +
+                "\nEVIL AI: I AM EXPERIENCING AN UNDOCUMENTED EMOTION.";
+
+        } else if (AI === 2 && player === 0) {
+            message +=
+                "\n\nEVIL AI: HAHAHA! HUMANITY IS DOOMED!" +
+                "\nJIGSAW: Perhaps you should have read the README, human.";
+        }
 
         const roundMessage =
             "ROUND " + round + "\n\n" +
@@ -334,10 +346,10 @@ function game() {
 
     if (player === 3) {
         console.log("The key to that chain.....is in the win");
-        alert("You defeated the Evil AI!");
+        alert("MISSION COMPLETE!\n\nJIGSAW: You have learned to play the game.");
     } else {
         console.log("I'll leave you in this room to rot");
-        alert("The Evil AI won!");
+        alert("MISSION FAILED!\n\nJIGSAW: I'll leave you in this room to rot.");
     }
 }
 game()
