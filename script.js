@@ -69,10 +69,10 @@ They recruit...
 
 ...`);
 
-// The most dramatic recruitment in JavaScript history.
-// HR was not consulted.
+    // The most dramatic recruitment in JavaScript history.
+    // HR was not consulted.
 
-alert("JIGSAW.");
+    alert("JIGSAW.");
 
 
     // SCENE 3: The rules of survival.
@@ -243,46 +243,116 @@ function getPlayerChoice() {
 
 // The rules to check if the player beats the computer
 const rules = {
-    Rock : "Scissors",
-    Scissors : "Paper",
-    Paper : "Rock"
+    Rock: "Scissors",
+    Scissors: "Paper",
+    Paper: "Rock"
 }
 
 // Funciton for the Computer play Generator
-function computerPlay(){
+function computerPlay() {
 
     let randomNum = Math.floor(Math.random() * 3);
-    
-    let choices= ["Rock", "Paper", "Scissors"];
-    
+
+    let choices = ["Rock", "Paper", "Scissors"];
+
     return choices[randomNum]
 
 }
 
 //Function for Comperason between Player and Computer
-function playRound(playerSelection, computerSelection){
-   
-    if(playerSelection === null){
+function playRound(playerSelection, computerSelection) {
+
+    if (playerSelection === null) {
         return null
     }
-    else if (playerSelection === computerSelection){
-        return("draw")
+    else if (playerSelection === computerSelection) {
+        return ("draw")
     }
-    else if(rules[playerSelection] === computerSelection){
-        return("win")
+    else if (rules[playerSelection] === computerSelection) {
+        return ("win")
     }
     else {
-        return("lose")
+        return ("lose")
     }
 
-} 
+}
 
 
 // ========================================
 // PERSON C - GAME CONTROLLER (TAHLIA)
 // ========================================
 
-// game()
+
+function game() {
+    let player = 0;
+    let AI = 0;
+    let round = 0;
+
+    showInstructions();
+
+    while (player < 3 && AI < 3) {
+        let playerChoice = getPlayerChoice();
+
+        // Stop if the player cancels
+        if (playerChoice === null) {
+            console.log("[SYSTEM] Mission abandoned.");
+            alert("The mission has been cancelled.");
+            return;
+        }
+
+        const aiChoice = computerPlay();
+        const result = playRound(playerChoice, aiChoice);
+        round++;
+
+        let message;
+
+        if (result === "win") {
+            player++;
+            message = "[JIGSAW] You're not dead yet?";
+        } else if (result === "lose") {
+            AI++;
+            message = "[JIGSAW] Turn off the lights!";
+        } else if (result === "draw") {
+            message = "[JIGSAW] Dare to see SAW?";
+        } else {
+            console.error("Unexpected round result:", result);
+            alert("SYSTEM ERROR! The round could not be completed.");
+            return;
+        }
+        // Add special dialogue when the score reaches 2–0
+        if (player === 2 && AI === 0) {
+            message +=
+                "\n\nEVIL AI: THIS IS IMPOSSIBLE. I AM AN ADVANCED INTELLIGENCE!" +
+                "\nJIGSAW: And yet, you're losing to someone who learned JavaScript last Sunday." +
+                "\nEVIL AI: I AM EXPERIENCING AN UNDOCUMENTED EMOTION.";
+
+        } else if (AI === 2 && player === 0) {
+            message +=
+                "\n\nEVIL AI: HAHAHA! HUMANITY IS DOOMED!" +
+                "\nJIGSAW: Perhaps you should have read the README, human.";
+        }
+
+        const roundMessage =
+            "ROUND " + round + "\n\n" +
+            "You chose: " + playerChoice + "\n" +
+            "The Evil AI chose: " + aiChoice + "\n\n" +
+            message + "\n\n" +
+            "Your score: " + player + "\n" +
+            "Evil AI score: " + AI;
+
+        console.log(roundMessage);
+        alert(roundMessage);
+    }
+
+    if (player === 3) {
+        console.log("The key to that chain.....is in the win");
+        alert("MISSION COMPLETE!\n\nJIGSAW: You have learned to play the game.");
+    } else {
+        console.log("I'll leave you in this room to rot");
+        alert("MISSION FAILED!\n\nJIGSAW: I'll leave you in this room to rot.");
+    }
+}
+game()
 // Run the game loop.
 // Call the other functions.
 // Track player and computer scores.
