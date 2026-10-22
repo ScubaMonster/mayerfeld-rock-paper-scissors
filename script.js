@@ -262,14 +262,17 @@ function computerPlay(){
 //Function for Comperason between Player and Computer
 function playRound(playerSelection, computerSelection){
    
-    if(playerSelection === computerSelection){
-        return("Draw")
+    if(playerSelection === null){
+        return null
+    }
+    else if (playerSelection === computerSelection){
+        return("draw")
     }
     else if(rules[playerSelection] === computerSelection){
-        return("Player wins")
+        return("win")
     }
     else {
-        return("Computer wins")
+        return("lose")
     }
 
 } 
