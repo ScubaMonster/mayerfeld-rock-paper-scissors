@@ -277,6 +277,10 @@ function game() {
             message = "[JIGSAW] Turn off the lights!";
         } else if (result === "draw") {
             message = "[JIGSAW] Dare to see SAW?";
+        } else {
+            console.error("Unexpected round result:", result);
+            alert("SYSTEM ERROR! The round could not be completed.");
+            return;
         }
 
         const roundMessage =
@@ -299,13 +303,7 @@ function game() {
         alert("The Evil AI won!");
     }
 }
-
-
-
-
-
-
-// game()
+game()
 // Run the game loop.
 // Call the other functions.
 // Track player and computer scores.
