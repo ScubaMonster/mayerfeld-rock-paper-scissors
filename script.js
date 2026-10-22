@@ -353,7 +353,7 @@ function game() {
         alert("MISSION FAILED!\n\nJIGSAW: I'll leave you in this room to rot.");
     }
 }
-game()
+
 // Run the game loop.
 // Call the other functions.
 // Track player and computer scores.
@@ -364,4 +364,4 @@ game()
 // GAME INITIALIZATION - PERSON C (TAHLIA)
 // ========================================
 
-// game(); // Enable when the game is ready.
+game(); // Enable when the game is ready.
