@@ -241,6 +241,43 @@ function getPlayerChoice() {
 // Return "win", "lose", or "draw".
 // Do not update scores here.
 
+// The rules to check if the player beats the computer
+const rules = {
+    Rock : "Scissors",
+    Scissors : "Paper",
+    Paper : "Rock"
+}
+
+// Funciton for the Computer play Generator
+function computerPlay(){
+
+    let randomNum = Math.floor(Math.random() * 3);
+    
+    let choices= ["Rock", "Paper", "Scissors"];
+    
+    return choices[randomNum]
+
+}
+
+//Function for Comperason between Player and Computer
+function playRound(playerSelection, computerSelection){
+   
+    if(playerSelection === null){
+        return null
+    }
+    else if (playerSelection === computerSelection){
+        return("draw")
+    }
+    else if(rules[playerSelection] === computerSelection){
+        return("win")
+    }
+    else {
+        return("lose")
+    }
+
+} 
+
+
 // ========================================
 // PERSON C - GAME CONTROLLER (TAHLIA)
 // ========================================
